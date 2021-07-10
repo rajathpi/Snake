@@ -1,6 +1,7 @@
 # snake_game
 
-A new Flutter project.
+This is a flutter project . For practice 
+
 
 ## Getting Started
 
