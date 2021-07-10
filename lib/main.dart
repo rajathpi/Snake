@@ -49,6 +49,7 @@ class _GameFieldState extends State<GameField> {
     height = MediaQuery.of(context).size.height;
     width = MediaQuery.of(context).size.width;
     return Scaffold(
+        backgroundColor: Color(0xFFa5d4bf),
         body: _isAlive
             ? Stack(
                 children: [
@@ -65,23 +66,53 @@ class _GameFieldState extends State<GameField> {
 
 //TODO on End
   Widget onEnd() {
-    return Column(
-      children: [
-        Text("Game Over"),
-        Text("Your Score is $_score"),
-        TextButton(
-          child: Text("Restart Game"),
-          onPressed: () {
-            setState(() {
-              _score = 0;
-              speed = 4;
-              length = 1;
-              _positions = [];
-              _isAlive = true;
-            });
-          },
-        )
-      ],
+    return SizedBox(
+      width: width,
+      child: Column(
+        mainAxisSize: MainAxisSize.max,
+        children: [
+          Spacer(
+            flex: 4,
+          ),
+          Text(
+            "Game Over",
+            style: TextStyle(
+                color: Color(0xFF692765),
+                fontSize: 24,
+                fontWeight: FontWeight.bold),
+          ),
+          Spacer(
+            flex: 1,
+          ),
+          Text("Your Score is $_score",
+              style: TextStyle(
+                  color: Color(0xFF0a5369),
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold)),
+          Spacer(
+            flex: 2,
+          ),
+          TextButton(
+            child: Text("Restart Game",
+                style: TextStyle(
+                    color: Color(0xFF7d581b),
+                    fontSize: 22,
+                    fontWeight: FontWeight.bold)),
+            onPressed: () {
+              setState(() {
+                _score = 0;
+                speed = 4;
+                length = 1;
+                _positions = [];
+                _isAlive = true;
+              });
+            },
+          ),
+          Spacer(
+            flex: 4,
+          ),
+        ],
+      ),
     );
   }
 
@@ -235,10 +266,10 @@ class _GameFieldState extends State<GameField> {
 
 //TODO chck border
   checkBorder(Offset position) {
-    if (position.dy >= height! - 30) position = Offset(position.dx, 16);
-    if (position.dy <= 0) position = Offset(position.dx, height! - 16);
-    if (position.dx >= width! - 30) position = Offset(16, position.dy);
-    if (position.dx <= 0) position = Offset(width! - 16, position.dy);
+    if (position.dy > height!) position = Offset(position.dx, 0);
+    if (position.dy < 0) position = Offset(position.dx, height!);
+    if (position.dx > width!) position = Offset(0, position.dy);
+    if (position.dx < 0) position = Offset(width!, position.dy);
     return position;
   }
 
