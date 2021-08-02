@@ -1,7 +1,6 @@
 # snake_game
 
-This is a flutter project . For practice 
-
+🐍Simple Snake game using Flutter
 
 ## Getting Started
 

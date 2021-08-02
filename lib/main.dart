@@ -49,18 +49,18 @@ class _GameFieldState extends State<GameField> {
     height = MediaQuery.of(context).size.height;
     width = MediaQuery.of(context).size.width;
     return Scaffold(
-        backgroundColor: Color(0xFFa5d4bf),
+        backgroundColor: Colors.black,
         body: _isAlive
             ? Stack(
-                children: [
-                  Stack(
-                    children: snakePieces(),
-                  ),
-                  score(),
-                  food,
-                  gamePad(),
-                ],
-              )
+          children: [
+            Stack(
+              children: snakePieces(),
+            ),
+            score(),
+            food,
+            gamePad(),
+          ],
+        )
             : onEnd());
   }
 
@@ -77,8 +77,8 @@ class _GameFieldState extends State<GameField> {
           Text(
             "Game Over",
             style: TextStyle(
-                color: Color(0xFF692765),
-                fontSize: 24,
+                color: Colors.red,
+                fontSize: 30,
                 fontWeight: FontWeight.bold),
           ),
           Spacer(
@@ -86,7 +86,7 @@ class _GameFieldState extends State<GameField> {
           ),
           Text("Your Score is $_score",
               style: TextStyle(
-                  color: Color(0xFF0a5369),
+                  color: Colors.white,
                   fontSize: 20,
                   fontWeight: FontWeight.bold)),
           Spacer(
@@ -95,7 +95,7 @@ class _GameFieldState extends State<GameField> {
           TextButton(
             child: Text("Restart Game",
                 style: TextStyle(
-                    color: Color(0xFF7d581b),
+                    color: Colors.white,
                     fontSize: 22,
                     fontWeight: FontWeight.bold)),
             onPressed: () {
@@ -137,47 +137,55 @@ class _GameFieldState extends State<GameField> {
             Align(
               alignment: Alignment.bottomCenter,
               child: IconButton(
+                  padding: EdgeInsets.zero,
                   onPressed: () {
                     if (_direction != Direction.up) _direction = Direction.down;
                   },
                   icon: Icon(
                     Icons.keyboard_arrow_down,
-                    size: 35,
+                    color : Colors.grey[800],
+                    size: 50,
                   )),
             ),
             Align(
               alignment: Alignment.topCenter,
               child: IconButton(
+                  padding: EdgeInsets.zero,
                   onPressed: () {
                     if (_direction != Direction.down) _direction = Direction.up;
                   },
                   icon: Icon(
                     Icons.keyboard_arrow_up,
-                    size: 35,
+                    color : Colors.grey[800],
+                    size: 50,
                   )),
             ),
             Align(
               alignment: Alignment.centerRight,
               child: IconButton(
+                  padding: EdgeInsets.zero,
                   onPressed: () {
                     if (_direction != Direction.left)
                       _direction = Direction.right;
                   },
                   icon: Icon(
                     Icons.keyboard_arrow_right,
-                    size: 35,
+                    color : Colors.grey[800],
+                    size: 50,
                   )),
             ),
             Align(
               alignment: Alignment.centerLeft,
               child: IconButton(
+                  padding: EdgeInsets.zero,
                   onPressed: () {
                     if (_direction != Direction.right)
                       _direction = Direction.left;
                   },
                   icon: Icon(
                     Icons.keyboard_arrow_left,
-                    size: 35,
+                    color : Colors.grey[800],
+                    size: 50,
                   )),
             ),
           ],
@@ -191,7 +199,7 @@ class _GameFieldState extends State<GameField> {
       top: 50,
       right: 50,
       child:
-          Text("$_score", style: TextStyle(color: Colors.cyan, fontSize: 22)));
+      Text("$_score", style: TextStyle(color: Colors.white, fontSize: 22)));
 
 //TODO speed
   changeSpeed() {
@@ -215,7 +223,7 @@ class _GameFieldState extends State<GameField> {
           size: 15,
           posX: _positions[i].dx,
           posY: _positions[i].dy,
-          color: Colors.blue));
+          color: Colors.white));
     }
     checkAlive();
     return pieces;
@@ -225,12 +233,12 @@ class _GameFieldState extends State<GameField> {
   foodDraw() {
     if (foodPosition == null) foodPosition = getRandomPositionWithinScreen();
     food = Piece(
-        color: Colors.orange,
+        color: Colors.green,
         posX: foodPosition!.dx,
         posY: foodPosition!.dy,
-        size: 15);
-    if (foodPosition! <= (_positions[0] + Offset(10, 10)) &&
-        foodPosition! >= (_positions[0] - Offset(10, 10))) {
+        size: 18);
+    if (foodPosition! <= (_positions[0] + Offset(15, 15)) &&
+        foodPosition! >= (_positions[0] - Offset(15, 15))) {
       _score += 5;
       length += 1;
       foodPosition = getRandomPositionWithinScreen();
@@ -290,10 +298,10 @@ class Piece extends StatelessWidget {
   Color color;
   Piece(
       {Key? key,
-      required this.size,
-      required this.posX,
-      required this.posY,
-      required this.color})
+        required this.size,
+        required this.posX,
+        required this.posY,
+        required this.color})
       : super(key: key);
 
   @override
