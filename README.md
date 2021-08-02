@@ -1,6 +1,19 @@
-# snake_game
+# Snake
 
-🐍Simple Snake game using Flutter
+<p>
+<img src="https://emojipedia-us.s3.amazonaws.com/source/skype/289/snake_1f40d.png" width="50">
+  Simple Snake game using Flutter
+</p>
+
+<p align="center">
+<img src="https://imgur.com/6sCGPpq.gif" >
+</p>
+
+<p align="center">
+  <a href="https://github.com/rajathpi/Snake/blob/main/snake.apk?raw=true">
+    <img src="https://www.inspirefm.org/wp-content/uploads/button-apk.png" height="95">
+  </a>
+</p>
 
 ## Getting Started
 
