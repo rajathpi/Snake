@@ -1,7 +1,9 @@
-# Snake
+<h1 align="center"> 
+  <img src="https://emojipedia-us.s3.amazonaws.com/source/skype/289/snake_1f40d.png" width="70">
+  <a href="https://rajathpi.github.io/Snake/">Snake</a> 
+</h1>
 
 <p>
-<img src="https://emojipedia-us.s3.amazonaws.com/source/skype/289/snake_1f40d.png" width="50">
   Simple Snake game using Flutter
 </p>
 
